@@ -16,7 +16,6 @@ class Administradorpre(QMainWindow):
         self.modificar.clicked.connect(self.modificar_elemento)
         self.eliminar.clicked.connect(self.eliminar_elemento)
 
-
     def create_table(self):
         self.c.execute("CREATE TABLE IF NOT EXISTS inventario(codigo TEXT,tipo TEXT ,cantidad TEXT)")
         self.conn.commit()
@@ -49,7 +48,6 @@ class Administradorpre(QMainWindow):
         self.tipo.clear()
         self.cant.clear()
 
-
         self.populate_table()
 
     def seleccionar_elemento(self, row, column):
@@ -57,9 +55,9 @@ class Administradorpre(QMainWindow):
         tipo = self.tabla_int.item(row, 1).text()
         cantidad = self.tabla_int.item(row, 2).text()
 
-        self.cod_bus.clear()
-        self.tipo.clear()
-        self.cant.clear()
+        self.cod_bus.setText(codigo)
+        self.tipo.setText(tipo)
+        self.cant.setText(cantidad)
 
     def modificar_elemento(self):
         codigo_actual = self.cod_bus.text()
@@ -93,4 +91,3 @@ class Administradorpre(QMainWindow):
                 self.populate_table()
         else:
             QMessageBox.warning(self, 'Elemento no seleccionado', 'No se ha seleccionado ningún elemento de la tabla.')
-
